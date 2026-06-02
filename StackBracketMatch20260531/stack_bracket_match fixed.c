@@ -4,12 +4,8 @@
  * Output: Valid / Invalid with specific error message
  *
  * Improvements over original:
- * 1. Initialize stack top properly.
- * 2. Use int for top index and return error codes.
- * 3. Increase stack size to handle deeper nesting.
- * 4. Use fgets() instead of scanf() to accept spaces.
- * 5. More descriptive error messages.
- * 6. Fixed typos (lenth -> length, Expresion -> Expression).
+ * 错误：缺少栈初始化函数：将topz指针置1
+ * 优化：用fgets+strcspn+strlen获取字符串及其长度，适配含有空格的整式
  */
 
 #include <stdio.h>
