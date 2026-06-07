@@ -7,28 +7,16 @@
 
 # Tips:
 对某个源文件，要定架构，编程路线更清楚：
+```
 1.头文件+函数声明+宏定义
 
 (2.main函数，调用函数声明中的函数)
 
 3.函数实现
+```
 
-2026.6.4 错误日志
-asux@AsuxWin10:~/programs/BasicDataStructAndAlgorithm/BiTreeAdvanced20260602$ ./BiTreeAdvanced.out 
-Input structure: operation (index) (pindex)
-example:
-add node 2 to node 1: a 2 1
-delete node 2: d 2
-show bitree: s
-thread the bitree: t
-quit: q
-a 2 1
-a 3 1
-a 4 2
-a 5 2
-t
-s
-In-order sequence: 2 1 3 
-In-order sequence(reversed): 3 1 2 
-q
-Segmentation fault (core dumped)
+# 二叉树线索化反思
+
+线索二叉树对于插入删除节点操作，需要重建线索，这往往依赖重新遍历整棵树。
+因此尽量在无需变动树，同时有着大量对树的访问的操作时，使用二叉线索树。
+线索二叉树遍历整棵树是O(logn)复杂度而非O(n)复杂度

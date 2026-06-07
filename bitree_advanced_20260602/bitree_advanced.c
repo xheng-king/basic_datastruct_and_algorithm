@@ -186,11 +186,22 @@ static int find_parent_node(int index, bitree bt, bitree_node **bn){
 }
 
 int delete_node_of_bitree(int index, bitree bt){
-    bitree_node *btn;
+    bitree_node *btn, *parent_btn;
     if(find_node(index, bt, &btn) == -1)
         return -1;
-
-    delete_node_post_order(btn);
+    
+    if(find_node(index, bt, &parent_btn) == -1){
+        //just delete this node
+        delete_node_post_order(btn);
+    }else{
+        //render the parent child pointer to NULL after delete this node 
+        if(parent_btn->lchild == btn)
+            parent_btn->lchild == NULL;
+        else
+            parent_btn->rchild == NULL;
+        delete_node_post_order(btn);
+    }
+    return 0;
 }
 
 int creat_inthread(bitree bt){
