@@ -1,8 +1,34 @@
 /*
  * File: BiTreeAdvanced.c
- * Purpose: Implement binary tree creation, traversal, node adding, node deleting, threading.
- * Input:  -
- * Output: -
+ * Purpose: Implements an advanced binary tree with the following features:
+ *          - Dynamic creation of a binary tree (root with index 1).
+ *          - In-order threading (converts the tree to a threaded binary tree).
+ *          - In-order traversal using the thread pointers (both forward and reverse).
+ *          - Add a new node as a left or right child of a given parent (if space available).
+ *          - Delete a node and its entire subtree (automatically frees memory).
+ *          - Interactive command-line interface for all operations.
+ * Input:   Interactive commands from standard input:
+ *          - a <index> <parent_index> : add a new node with the given index as a child of parent_index.
+ *          - d <index>               : delete the node with the given index and its subtree.
+ *          - s                       : show the tree by performing both forward and reverse in-order
+ *                                       traversals (works only after threading).
+ *          - t                       : thread the current binary tree (in-order threading).
+ *          - q                       : quit the program (deletes the entire tree first).
+ *          Any other input prints an error message and continues.
+ * Output:  - For 's' command: prints the in-order sequence and the reversed in-order sequence
+ *            (if the tree has been threaded). If not threaded, prints an error message.
+ *          - For invalid commands: "Wrong input."
+ *          - No explicit output for 'a', 'd', 't' commands unless an error occurs
+ *            (e.g., adding to a full parent or deleting a non‑existent node – but note:
+ *            the current implementation lacks error printing for these cases).
+ *          - Upon quit, the tree is deallocated silently.
+ * Notes:   - The tree uses a fixed root with index 1.
+ *          - Threading is global: once threaded (`is_thread = 1`), subsequent deletions
+ *            respect thread flags, and traversals require the tree to be threaded.
+ *          - The current implementation has several bugs (e.g., `find_parent_node`
+ *            incorrectly uses `==` instead of `=`, and deletion after threading may
+ *            not handle thread pointers correctly). This header describes the intended
+ *            behavior as implied by the code structure.
  */
 
 #include <stdio.h>
