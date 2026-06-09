@@ -94,6 +94,20 @@ void bfs_traverse(graph *g){
     printf("\n");
 }
 
+static void dfs(graph *g, int i){
+    printf("%d ", i);
+    visit[i] = 1;
+    for(int j = 0; j < MAX_VERTEX_LEN; j++){
+        if(visit[j] == 0 && g->edge[i][j] == 1)
+            dfs(g, j);
+    }
+}
+
 void dfs_traverse(graph *g){
-    
+    memset(visit, 0, sizeof(visit));
+    for(vertex_type i = 0; i < MAX_VERTEX_LEN; i++){
+        if(visit[i] == 0)
+            dfs(g, i);
+    }
+    printf("\n");
 }
