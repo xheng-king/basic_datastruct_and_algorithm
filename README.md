@@ -13,9 +13,9 @@
 ```
 /*
  * File: .c
- * Purpose: Check whether brackets in an expression are valid (using stack)
- * Input:  An intetral expression
- * Output: Valid / Invalid with specific error message
+ * Purpose:
+ * Input:
+ * Output:
  */
 ```
 
@@ -26,7 +26,7 @@
 提示词
 ```
 <代码>
-批评我的代码，并以英文完善该代码的头部注释
+批评我的代码，并依据我的原有代码，以英文完善该代码的头部注释
 ```
 
 最后以一个markdown文件总结经验，不足之处。

@@ -32,6 +32,27 @@ for dir in "$ROOT_DIR"/*/; do
         fi
     done
 
+    for cppfile in *.cpp; do
+        [ -f "$cppfile" ] || continue
+
+        base="${cppfile%.cpp}"
+        outfile="${base}.out"
+
+        if [ -f "$outfile" ]; then
+            echo -e "${YELLOW}overlook $dir$outfile (existed)${NC}"
+            continue
+        fi
+
+        echo -e "${GREEN}compile $dir$cppfile -> $outfile${NC}"
+        g++ -o "$outfile" "$cppfile"
+
+        if [ $? -eq 0 ]; then
+            echo "  success"
+        else
+            echo "  fail"
+        fi
+    done
+
     cd "$ROOT_DIR" || exit
 done
 

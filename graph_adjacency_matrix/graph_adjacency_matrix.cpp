@@ -1,8 +1,12 @@
 /*
- * File: graph_adjacency_matrix.c
- * Purpose:
- * Input:
- * Output:
+ * File: graph_adjacency_matrix.cpp
+ * Purpose: Implement an undirected graph using adjacency matrix.
+ *          Supports adding edges and performing BFS/DFS traversals.
+ * Input:   Interactive commands:
+ *          a <v1> <v2> - add an edge between v1 and v2 (0-indexed)
+ *          t           - print BFS traversal result, then DFS traversal result
+ *          any other input terminates the program.
+ * Output:  For command 't', prints BFS vertex order on one line and DFS order on the next line.
  */
 
 #include <stdio.h>
