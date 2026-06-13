@@ -80,12 +80,18 @@ static arc_node* find_last_arc_node(graph *g, int vertex){
 }
 
 void add_edge(graph *g, int v1, int v2){
-    if(g->vertex_list[v1].first_arc == NULL)
+    arc_node *p = g->vertex_list[v1].first_arc;
+    if(p == NULL){
         g->vertex_list[v1].first_arc = (arc_node *)malloc(sizeof(arc_node));
-    else{
-        arc_node *p = find_last_arc_node(g, v1);
-        p->adjacent_vertex = v2;
-        p->next = NULL;
+        g->vertex_list[v1].first_arc->adjacent_vertex = v2;
+        g->vertex_list[v1].first_arc->next = NULL;
+    }else{
+        while(p->next != NULL)
+            p = p->next;
+
+        p->next = (arc_node *)malloc(sizeof(arc_node));
+        p->next->adjacent_vertex = v2;
+        p->next->next = NULL;
     }
 }
 
@@ -100,7 +106,7 @@ static void bfs(graph *g, int vertex){
         for(arc_node *p = g->vertex_list[tmp].first_arc; p != NULL; p = p->next){
             if(visit[p->adjacent_vertex] == 0){
                 printf("%d ", p->adjacent_vertex);
-                visit[p->adjacent_vertex] == 1;
+                visit[p->adjacent_vertex] = 1;
                 my_queue.push(p->adjacent_vertex);
             }
         }
@@ -124,7 +130,8 @@ static void dfs(graph *g, int vertex){
 
     arc_node *p = g->vertex_list[vertex].first_arc;
     for(; p != NULL; p = p->next){
-        dfs(g, p->adjacent_vertex);
+        if(visit[p->adjacent_vertex] == 0)
+            dfs(g, p->adjacent_vertex);
     }
 }
 
