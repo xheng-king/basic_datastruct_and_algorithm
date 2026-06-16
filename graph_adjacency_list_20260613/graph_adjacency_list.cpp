@@ -1,8 +1,8 @@
 /*
  * File: graph_adjacency_list.cpp
- * Purpose:
- * Input:
- * Output:
+ * Purpose: Implements a graph using adjacency list representation. Supports adding directed edges and performing BFS (Breadth-First Search) and DFS (Depth-First Search) traversals on the graph.
+ * Input: Interactive commands. 'a' followed by an integer arc_num and arc_num pairs of vertices (v1 v2) to add directed edges from v1 to v2. 't' triggers BFS and DFS traversals. Any other character exits the program.
+ * Output: For the 't' command, outputs the BFS traversal order followed by the DFS traversal order, each on a new line. Vertex indices are printed as integers separated by spaces.
  */
 
 #include <stdio.h>
@@ -10,7 +10,7 @@
 #include <stdlib.h>
 #include <queue>
 
-#define VERTEX_NUM 7
+#define VERTEX_NUM 10
 
 typedef struct arc_node{
     int adjacent_vertex;
@@ -71,12 +71,6 @@ int main(){
                 break;
         }
     }
-}
-
-static arc_node* find_last_arc_node(graph *g, int vertex){
-    arc_node *p = g->vertex_list[vertex].first_arc;
-    for(; p->next != NULL; p = p->next){}
-    return p;
 }
 
 void add_edge(graph *g, int v1, int v2){
