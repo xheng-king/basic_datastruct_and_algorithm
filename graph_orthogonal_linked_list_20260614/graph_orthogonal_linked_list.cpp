@@ -1,6 +1,6 @@
 /*
  * File: graph_orthogonal_linked_list.c
- * Purpose:
+ * Purpose: 
  * Input:
  * Output:
  */
@@ -10,7 +10,7 @@
 #include <string.h>
 #include <queue>
 
-#define VERTEX_NUM 10
+#define VERTEX_NUM 7
 
 typedef struct arc_node{
     int tail_vertex;
@@ -94,13 +94,16 @@ graph *initial_graph(void){
 }
 
 void add_edge(graph *g, int tail, int head){
-    //head insertion
-    arc_node *tmp = g->vertex_list[tail].first_out->next_same_tail;
-    g->vertex_list[tail].first_out = (arc_node *)malloc(sizeof(arc_node));
-    g->vertex_list[tail].first_out->head_vertex = head;
-    g->vertex_list[tail].first_out->tail_vertex = tail;
-    g->vertex_list[tail].first_out->next_same_tail = tmp;
-    g->vertex_list[tail].first_out->next_same_head = 
+    //get a new arc node
+    arc_node *new_arc_node = (arc_node *)malloc(sizeof(arc_node));
+    new_arc_node->head_vertex = head;
+    new_arc_node->tail_vertex = tail;
+    new_arc_node->next_same_head = g->vertex_list[tail].first_out->next_same_head;
+    new_arc_node->next_same_tail = g->vertex_list[head].first_in->next_same_tail;
+
+    //insert the node to the link list
+    g->vertex_list[tail].first_out->next_same_tail = new_arc_node;
+    g->vertex_list[head].first_in->next_same_head = new_arc_node;
 }
 
 void bfs(graph *g, int vertex){
@@ -112,7 +115,7 @@ void bfs(graph *g, int vertex){
         int pop_vertex = my_queue.front();
         my_queue.pop();
 
-        for(arc_node *p = g->vertex_list[pop_vertex].first_out; p != NULL; p = p->next_tail){
+        for(arc_node *p = g->vertex_list[pop_vertex].first_out; p != NULL; p = p->next_same_tail){
             if(visit[p->head_vertex] == 0){
                 printf("%d ", p->head_vertex);
                 visit[p->head_vertex] = 1;
@@ -137,7 +140,7 @@ void dfs(graph *g, int vertex){
     printf("%d ", vertex);
     visit[vertex] = 1;
 
-    for(arc_node *p = g->vertex_list[vertex].first_out; p != NULL; p = p->next_tail){
+    for(arc_node *p = g->vertex_list[vertex].first_out; p != NULL; p = p->next_same_tail){
         if(visit[p->head_vertex] == 0)
             bfs(g, p->head_vertex);
     }
@@ -150,4 +153,6 @@ void dfs_traverse(graph *g){
         if(visit[i] == 0)
             bfs(g, i);
     }
+
+    printf("\n");
 }
