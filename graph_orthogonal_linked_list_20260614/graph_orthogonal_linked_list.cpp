@@ -1,5 +1,5 @@
 /*
- * File: graph_orthogonal_linked_list.c
+ * File: graph_orthogonal_linked_list.cpp
  * Purpose: Implement a directed graph using orthogonal linked list (also known as adjacency multilist) 
  *          and perform Breadth-First Search (BFS) and Depth-First Search (DFS) traversals.
  * Input:   Interactive commands from stdin:
@@ -39,7 +39,7 @@ std::queue<int> my_queue;
 
 graph *initial_graph(void);
 
-void add_edge(graph *g, int tail, int head);
+void add_arc(graph *g, int tail, int head);
 
 void bfs(graph *g, int vertex);
 
@@ -67,7 +67,7 @@ int main(){
             for(int i = 0; i < num; i++){
                 int tail, head;
                 scanf(" %d %d", &tail, &head);
-                add_edge(g, tail, head);
+                add_arc(g, tail, head);
             }
         }else if(choice == 't'){
             bfs_traverse(g);
@@ -98,7 +98,7 @@ graph *initial_graph(void){
     return g;
 }
 
-void add_edge(graph *g, int tail, int head){
+void add_arc(graph *g, int tail, int head){
     //get a new arc node
     arc_node *new_arc_node = (arc_node *)malloc(sizeof(arc_node));
     new_arc_node->head_vertex = head;
