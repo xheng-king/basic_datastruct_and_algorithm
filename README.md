@@ -34,10 +34,10 @@
 最后以一个markdown文件总结经验，不足之处。
 
 ## 自动编译
+进入到项目根目录后，执行：
 
 ```
-chmod +x compile_all.sh
-./compile_all.sh
+make
 ```
 
 ## 图结构测试示例
