@@ -55,7 +55,7 @@ graph *init_graph(void){
     return g;
 }
 
-void add_arc(graph *g, int i, int j, int info){
+void add_edge(graph *g, int i, int j, int info){
     edge_node *new_node = (edge_node *)malloc(sizeof(edge_node));
     new_node->info = info;
     new_node->adjacent_vertex = i;
@@ -159,7 +159,7 @@ int main(){
                 scanf(" %d", &arc_num);
                 for(int i = 0; i < arc_num; i++){
                     scanf(" %d %d %d", &v1, &v2, &info);
-                    add_arc(g, v1, v2, info);
+                    add_edge(g, v1, v2, info);
                 }
                 break;
             
