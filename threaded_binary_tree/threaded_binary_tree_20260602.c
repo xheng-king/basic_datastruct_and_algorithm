@@ -1,5 +1,5 @@
 /*
- * File: bitree_advanced_20260602.c
+ * File: threaded_binary_tree_20260602.c
  * Purpose: Implements an advanced binary tree with the following features:
  *          - Dynamic creation of a binary tree (root with index 1).
  *          - In-order threading (converts the tree to a threaded binary tree).
