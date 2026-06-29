@@ -1,5 +1,5 @@
 /*
- * File: graph_adjacency_multilist.cpp
+ * File: graph_adjacency_multilist_20260623.cpp
  * Purpose: Implements an undirected graph using an adjacency multilist representation.
  *          Supports adding edges, and performs both breadth‑first search (BFS) and
  *          depth‑first search (DFS) traversals over the entire graph, handling

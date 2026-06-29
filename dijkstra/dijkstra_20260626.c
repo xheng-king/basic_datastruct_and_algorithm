@@ -1,5 +1,5 @@
 /*
- * File: dijkstra.c
+ * File: dijkstra_20260626.c
  * Purpose: Implements Dijkstra's shortest-path algorithm on an undirected,
  *          weighted graph with a fixed number of vertices (VERTEX_NUM = 8).
  *          The program reads interactive commands to incrementally build

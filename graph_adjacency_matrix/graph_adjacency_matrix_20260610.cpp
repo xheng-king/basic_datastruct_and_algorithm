@@ -1,5 +1,5 @@
 /*
- * File: graph_adjacency_matrix.cpp
+ * File: graph_adjacency_matrix_20260610.cpp
  * Purpose: Implement an undirected graph using adjacency matrix.
  *          Supports adding edges and performing BFS/DFS traversals.
  * Input:   Interactive commands:

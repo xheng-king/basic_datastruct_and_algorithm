@@ -1,5 +1,5 @@
 /*
- * File: disjoint_set_union.c
+ * File: disjoint_set_union_20260607.c
  * Purpose: Implements a Disjoint Set Union (Union-Find) data structure with
  *          path compression and union by size. Supports finding the root of
  *          an element and merging two sets. The program provides an interactive
