@@ -11,15 +11,12 @@
  *          - 'd' deletes all existing edges.
  *          - Any other character terminates the program.
  * Output:  On 'f': prints "result: " followed by the topological order (space-separated) 
- *          if successful, otherwise prints "fail". Also prints each vertex's in-degree 
- *          during sorting (debug output, currently present). On other commands, 
- *          no output except implicit prompts.
+ *          if successful, otherwise prints "fail". 
  */
 
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-#include <limits.h>
 
 #define VERTEX_NUM 5
 
@@ -86,18 +83,21 @@ int topological_sort(graph *g, int result[]){
             sum += g->arc[j][i];
         }
         in_degree[i] = sum;
-        printf("%d ", sum);
-        if(sum == 0)
+        if(sum == 0){
             push(s, i);
+            result[pointor++] = i;
+        }
     }
 
     while(!stack_is_empty(s)){
         int item = pop(s);
-        result[pointor++] = item;
         for(int i = 0; i < VERTEX_NUM; i++){
             if(g->arc[item][i] == 1){
                 if(!(--in_degree[i]))
+                {
+                    result[pointor++] = i;
                     push(s, i);
+                }
             }
         }
     }

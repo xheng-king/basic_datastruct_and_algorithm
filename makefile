@@ -4,27 +4,22 @@ GREEN := \033[0;32m
 YELLOW := \033[1;33m
 NC := \033[0m
 
-C_SRCS   := $(wildcard */*.c)
-CPP_SRCS := $(wildcard */*.cpp)
-
-C_OUTS   := $(patsubst %.c,%.out,$(C_SRCS))
-CPP_OUTS := $(patsubst %.cpp,%.out,$(CPP_SRCS))
-ALL_OUTS := $(C_OUTS) $(CPP_OUTS)
+DIRS := $(foreach d,$(patsubst %/,%,$(wildcard */)),$(if $(wildcard $(d)/*.c $(d)/*.cpp),$(d),))
+ALL_OUTS := $(foreach dir,$(DIRS),$(dir)/$(notdir $(dir)).out)
 
 .PHONY: all clean
 
 all: $(ALL_OUTS)
 	@echo "done"
 
-%.out: %.c
-	@printf "$(GREEN)compile $< -> $@$(NC)\n"
-	gcc -o $@ $<
+define compile_rule
+$(1)/$(notdir $(1)).out: $$(shell ls -v $(1)/*.c $(1)/*.cpp 2>/dev/null | tail -1)
+	@printf "$$(GREEN)compile $$< -> $$@$$(NC)\n"
+	$$(if $$(filter %.c,$$<),gcc,g++) -o $$@ $$<
 	@echo "  success"
+endef
 
-%.out: %.cpp
-	@printf "$(GREEN)compile $< -> $@$(NC)\n"
-	g++ -o $@ $<
-	@echo "  success"
+$(foreach dir,$(DIRS),$(eval $(call compile_rule,$(dir))))
 
 clean:
 	rm -f $(ALL_OUTS)
