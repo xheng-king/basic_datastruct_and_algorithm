@@ -199,7 +199,7 @@ static int find_parent_node(int index, bitree bt, bitree_node **bn){
         return -1;
 
     if((bt->lchild->index == index) || (bt->rchild->index == index)){
-        *bn == bt;
+        *bn = bt;
         return 0;
     }
 
