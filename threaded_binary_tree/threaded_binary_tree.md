@@ -22,7 +22,7 @@
 
 ### 2..线索化:
 inthread：中序递归函数，若当前结点非空，则先线索化左子树，再线索化自身(设置p和pre)，最后线索化右子树  
-creat_inthread：接口函数，负责提供pre指针供inthread使用并修改，最后将pre指向的中序序列最后的结点的rchild置空，rtag置1
+creat_inthread：擦屁股函数，负责提供pre指针供inthread使用并修改，最后将pre指向的中序序列最后的结点的rchild置空，rtag置1
 ### 3.遍历线索树
 first_node：查找一颗（子）树第一个中序结点，即返回最左下的结点
 next_node：查找当前结点在中序序列中的下一个结点，即有rtag就用rchild，没有rtag就用first_node找右子树第一个中序结点
