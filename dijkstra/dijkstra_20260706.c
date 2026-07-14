@@ -95,7 +95,6 @@ int main(){
     for(int i = 0; i < arc_num; i++){
         scanf(" %d %d %d", &tail, &head, &info);
         add_arc(g, tail, head, info);
-        add_arc(g, head, tail, info);
     }
 
     printf("source:");
