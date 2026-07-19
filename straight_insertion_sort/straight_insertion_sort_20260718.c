@@ -14,9 +14,8 @@ void insert_sort(int arr[], int length){
     for(int i = 2; i <= length; i++){
         if(arr[i] < arr[i-1]){
             arr[0] = arr[i];
-            arr[i] = arr[i-1];
             int j;
-            for(j = i-2; arr[0] < arr[j]; j--){
+            for(j = i-1; arr[0] < arr[j]; j--){
                 arr[j+1] = arr[j];
             }
             arr[j+1] = arr[0];
