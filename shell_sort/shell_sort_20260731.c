@@ -1,5 +1,5 @@
 /*
- * File: shell_sort_20260722.c
+ * File: shell_sort_20270731.c
  * Purpose: Sort an integer array in ascending order using the Shell Sort algorithm
  *          (diminishing increment sort). The array uses index 0 as a sentinel,
  *          so valid elements are stored from index 1 to length.
@@ -16,21 +16,22 @@
 #define DT_SIZE 3
 
 void shell_insert(int arr[], int length, int di){
-    for(int i = 1+di; i <= length; i++){
-        if(arr[i] < arr[i-di]){
+    for(int i = 1 + di; i <= length; i++){
+        if(arr[i] < arr[i - di]){
             arr[0] = arr[i];
             int j;
-            for(j = i-di; j >= 0 && arr[j] > arr[0]; j -= di){
-                arr[j+di] = arr[j];
+            for(j = i - di; j >= 0 && arr[0] < arr[j]; j -= di){
+                arr[j + di] = arr[j];
             }
-            arr[j+di] = arr[0];
+            arr[j + di] = arr[0];
         }
     }
 }
 
-void shell_sort(int arr[], int length, int dt[], int t){
-    for(int i = 0; i < t; i++)
-        shell_insert(arr, length, dt[i]);
+void shell_sort(int arr[], int length, int d[], int d_length){
+    for(int i = 0; i < d_length; i++){
+        shell_insert(arr, length, d[i]);
+    }
 }
 
 int main(){
