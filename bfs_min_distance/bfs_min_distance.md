@@ -10,10 +10,10 @@ bfs求单元最短路径，实际上就是求一个distance数组
 
 bfs_min_distance亦属于内层函数，但其不需要访问非连通图的外层函数  
 
-bfs_min_distance对一个结点处理包括：设置distance->标记已访问->入队
+bfs_min_distance对一个结点处理包括：设置distance、path->标记已访问->入队  
 
-bfs、dfs、bfs_min_distance、dijkstra四者都需要一个visit数组(final数组)
-此外，bfs_min_distance、dijkstra需要distance和path数组保存结果
+bfs、dfs、bfs_min_distance、dijkstra四者都需要一个visit数组(final数组)  
+此外，bfs_min_distance、dijkstra需要distance和path数组保存结果  
 
 ## 注意
 

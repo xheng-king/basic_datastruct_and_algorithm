@@ -1,6 +1,13 @@
+## 大体实现
+三层循环，  
+最外层循环遍历所有结点，当前结点作为中转结点m  
+中层循环遍历所有行i，  
+内层循环遍历所有列j，若arc[i][m]+arc[m][j]<arc[i][j]，  
+　则更新arc[i][j]为arc[i][m]+arc[m][j]
+
 ## 错误一
 
-让limits.h中定义的INT_MAX，在涉及边（弧）的**权重矩阵**的图算法中不可行。
+让limits.h中定义的INT_MAX，在涉及边（弧）的**权重矩阵**的图算法中不可行。  
 
 权重矩阵以INT_MAX(0x7fffffff)，若某算法需要将两条边的权值相加，  
 如，此folyd算法将distance[i][round]与distance[round][j]相加  
