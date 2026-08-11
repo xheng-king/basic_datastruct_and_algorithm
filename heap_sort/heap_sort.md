@@ -8,11 +8,11 @@
 　　2.2比较arr[0]与arr[i]，  
 　　　a.若arr[0]大于arr[i]，表明可以将arr[0]放在k处，此时退出循环即可(break)；  
 　　　b.否则，让arr[i]放在k处，同时置k为i。  
-当某一轮循环让ix2指向k的左孩子发现ix2超过len，那么就直接退出循环，故循环的终止条件是i<=len。  
+当某一轮循环让ix2指向k的左孩子发现ix2超过len，那么就直接退出循环，故循环的终止条件是i<=len，否则，i自乘2。  
 3.出循环后，将arr[0]放在k处
 
 #### build_max_heap
-设置一个循环，i从len/2递减到1，以i为堆的根节点，调用heap_adjust。  
+设置一个循环，i从len/2递减到1，以i为根节点的堆，调用heap_adjust。  
 
 #### heap_sort
 1.首先调用build_max_heap建大根堆  
