@@ -9,7 +9,7 @@
 　　2.2.high处元素放于low  
 　　2.3.low处元素若小于等于pivot则一直右移  
 　　2.4.low处元素放于high  
-3.low处放pivot  
+3.low处放pivot（或high处放pivot，无所谓，最后high必等于low）  
 4.返回low  
 
 注意，2、2.1、2.3这三个while循环，都有low<high的判别  
