@@ -10,4 +10,4 @@
 3.用两个while循环，分别以i小于等于mid和j小于等于high为循环条件，继续让arr[k++]=arr[i++]或arr[k++]=arr[j++]  
 
 #### void merge_sort(elemtype arr[], int low, int high)————这个接口函数和快排很像:
-如果low<high，先计算mid=(low+high)/2，然后对[low,mid]与[mid+1~high]两个区间调用自身，再调用merge归并两个有序段
+如果low小于high，先计算mid=(low+high)/2，然后对[low,mid]与[mid+1~high]两个区间调用自身，再调用merge归并两个有序段

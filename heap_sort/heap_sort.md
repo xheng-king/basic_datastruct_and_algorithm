@@ -4,7 +4,7 @@
 #### void heap_adjust(elemtype arr[], int k, int len)
 1.设置哨兵arr[0]为根arr[k]；  
 2.进入循环，初始置i为k的左孩子(2xk)：  
-　　2.1若i有右兄弟(i<len)，且i的右兄弟比i大(arr[i]小于arr[i+1])则置i为i+1；  
+　　2.1若i有右兄弟(i小于len)，且i的右兄弟比i大(arr[i]小于arr[i+1])则置i为i+1；  
 　　2.2比较arr[0]与arr[i]，  
 　　　a.若arr[0]大于arr[i]，表明可以将arr[0]放在k处，此时退出循环即可(break)；  
 　　　b.否则，让arr[i]放在k处，同时置k为i。  
